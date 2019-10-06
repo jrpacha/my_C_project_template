@@ -1,46 +1,32 @@
-# This Makefile will be helpful to build over 90% of your
-# projects in C/C+ and fortran 77
-
-# Sources:
+# This Makefile will help to build over 90% of your projects in C/C+ and
+# fortran 77
+#
+# Sources. See,
 # http://make.mad-scientist.net/papers/advanced-auto-dependency-generation/
 # http://nuclear.mutantstargoat.com/articles/make/
-
+#Here we use much of the code that's in these webs!
+#
 # Use:
-
 # Create a folder to hold your project, for example
-
-# ~$ mkdir my_project
-
-# Then copy this makefile into there
-
-# ~$ cp Makefile ~/my_project/
-
-# In addition, create two subfolders, 
-
-# mkdir ~/my_project/include
-
-# to place your include (.h, .hh) files, and
-
-# mkdir ~/my_project/src
-
-# to place your source (.c, .cc, .cpp) files
-
-# Then, to build you project
-
-# cd ~/my_project
-# ~/my_project $ make 
-
-# To delete the .o (object) and .d (dependence) files
-
-# ~/my_project $ make clean
-
-# To remove .o .d and exec files
-
-# ~/my_project mrproper
+# 	~$ mkdir my_project
+# and copy this makefile there
+# 	~$ cp Makefile ~/my_project/
+# In addition, create two subfolders, include 
+# 	~$ mkdir ~/my_project/include
+# to place your include (.h, .hh) files, and src
+# 	~$ mkdir ~/my_project/src
+# to place your source (.c, .cc, .cpp) files.
+# Then, to build you project just cd to the project folder, i.e.,
+# 	~$ cd ~/my_project
+# and run make
+# 	~/my_project $ make 
+# Other actions
+# -- To delete the .o (object) and .d (dependence) files
+# 	~/my_project $ make clean
+# -- To remove .o .d and exec files
+# 	~/my_project mrproper
 
 PROG=$(notdir $(CURDIR))#name of the project
-# see:
-# 	echo $(PROG)
 SRCDIR=       src
 HDIR =        include
 OBJDIR=       .o
@@ -54,7 +40,7 @@ ifdef OS
     RMFILES = del /Q /F $(OBJDIR)\*.o $(DEPDIR)\*.d 2>NUL
     RMDIR = rd $(OBJDIR) $(DEPDIR) 2>NUL
     EXE=$(PROG:=.exe)
-	RUN=$(EXE)
+    RUN=$(EXE)
     RMEXE= del /Q /F $(EXE) 2>NUL
     USE=Use:
     USE.HELP='make help', to see other options.
@@ -62,7 +48,7 @@ ifdef OS
     USE.CLEAN='make clean', to delete the object and dep files.
     USE.MRPROPER='make mrproper', to delete the executable as well.
     ECHO=@echo.
-else
+else 
     ifeq ($(shell uname), Linux)
         USE="Use:"
         USE.HELP="      'make help', to see other options."
@@ -76,9 +62,9 @@ else
         RMFILES = $(RM) $(OBJDIR)/*.o $(DEPDIR)/*.d
         RMDIR = rmdir $(OBJDIR) $(DEPDIR)
         EXE= $(PROG)
-		RUN= ./$(EXE)
+        RUN= ./$(EXE)
         RMEXE = rm -f $(EXE)
-		    ECHO=@echo
+        ECHO=@echo
     endif
 endif
 
