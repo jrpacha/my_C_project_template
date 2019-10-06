@@ -1,0 +1,7 @@
+{
+    "makefileCommandRunner.makefileName": "Makefile",
+    "files.associations": {
+        "cstdlib": "cpp",
+        "iostream": "cpp"
+    }
+}
