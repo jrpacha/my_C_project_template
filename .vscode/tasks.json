@@ -25,7 +25,7 @@
       "type": "shell",
       "command": "make",
       "args": [
-          "my_project_release",
+          "build",
       ],
       "group": "build",
 	    "presentation": {

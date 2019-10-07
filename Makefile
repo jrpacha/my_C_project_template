@@ -39,9 +39,8 @@ ifdef OS
     POSTCOMPILE = $(MV) $(DEPDIR)\$*.Td $(DEPDIR)\$*.d 2>NUL
     RMFILES = del /Q /F $(OBJDIR)\*.o $(DEPDIR)\*.d 2>NUL
     RMDIR = rd $(OBJDIR) $(DEPDIR) 2>NUL
-    EXE=$(PROG:=.exe)
-    RUN=$(EXE)
-    RMEXE= del /Q /F $(EXE) 2>NUL
+    RUN=$(PROG)
+    RMEXE= del /Q /F $(PROG).exe 2>NUL
     USE=Use:
     USE.HELP='make help', to see other options.
     USE.BUILD='make $(PROG)', to build the executable, $(PROG).
@@ -50,20 +49,19 @@ ifdef OS
     ECHO=@echo.
 else 
     ifeq ($(shell uname), Linux)
-        USE="Use:"
-        USE.HELP="      'make help', to see other options."
-        USE.BUILD="     'make ${PROG}', to build the executable, $(PROG)."
-        USE.CLEAN="     'make clean', to delete the object and dep files."
-        USE.MRPROPER="     'make mrproper', to delete the executable as well."
         $(shell mkdir -p $(OBJDIR) >/dev/null)
         $(shell mkdir -p $(DEPDIR) >/dev/null)
         MV = mv -f
         POSTCOMPILE = $(MV) $(DEPDIR)/$*.Td $(DEPDIR)/$*.d
         RMFILES = $(RM) $(OBJDIR)/*.o $(DEPDIR)/*.d
         RMDIR = rmdir $(OBJDIR) $(DEPDIR)
-        EXE= $(PROG)
-        RUN= ./$(EXE)
-        RMEXE = rm -f $(EXE)
+        RUN= ./$(PROG)
+        RMEXE = rm -f $(PROG)
+        USE="Use:"
+        USE.HELP="      'make help', to see other options."
+        USE.BUILD="     'make ${PROG}', to build the executable, $(PROG)."
+        USE.CLEAN="     'make clean', to delete the object and dep files."
+        USE.MRPROPER="     'make mrproper', to delete the executable as well."
         ECHO=@echo
     endif
 endif
@@ -80,11 +78,11 @@ OBJS=$(patsubst %,$(OBJDIR)/%.o,$(SRCS))
 DEPS=$(patsubst %,$(DEPDIR)/%.d,$(SRCS))
 
 CC=            gcc
-CCFLAGS=      -g -O0 #-fPIC
+CCFLAGS=      -g -O0 #-W -fPIC
 CCLIBS=	      #-lm
 
 CXX=           g++
-CXXFLAGS=     -g -O0
+CXXFLAGS=     -g -O0 #-W -PIC
 CXXLIBS=      #-lm
 
 FC=            gfortran
@@ -96,18 +94,16 @@ LDFLAGS=
 
 # Note: -std=legacy.  We use std=legacy to compile fortran 77
 
-PROG_RELEASE=$(PROG)_release
+build: $(PROG)
 
-$(PROG_RELEASE): $(EXE)
-
-$(EXE): $(OBJS)
+$(PROG): $(OBJS)
 	$(CXX) -o$@ $^ $(LDFLAGS) $(CXXLIBS) $(CCLIBS) $(FFLIBS)
 	$(ECHO)
 	$(ECHO) $(USE)
 	$(ECHO)      $(USE.HELP)
 	$(ECHO)
 
-run: $(EXE)
+run: build
 	$(RUN)
 
 help:
