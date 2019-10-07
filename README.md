@@ -1,18 +1,18 @@
 # Template folder for FORTRAN/C/C++ projects
 
-## my_project: Template for my C/C++ projects:
+## my_project_template: Template for my C/C++ projects:
 
 * Put your source files in **src** directory
 * Put yout include file in **include** directory
 
   * To build the project:
 
-    `~$ make -f my_project.mak my_project_release`
+    `~$ make`
 
   * To clean the project
 
-    `~$ make -f my_project.mak clean`
+    `~$ make clean`
 
-  * To clean the project completely
+  * To clean the project completely (purge)
 
-    `~$ make -f my_project.mak mrproper`
+    `~$ make mrproper`
