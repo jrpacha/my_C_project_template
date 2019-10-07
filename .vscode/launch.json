@@ -6,7 +6,7 @@
     "configurations": [
       {
         //Windows
-        "name": "(gdb) build & debug my project",
+        "name": "(gdb) build & debug my project (windows)",
         "type": "cppdbg",
         "request": "launch",
         "program": "${workspaceFolder}\\${workspaceFolderBasename}.exe",
@@ -28,7 +28,7 @@
       },
       {
         //Linux
-        "name": "(gdb) build & debug my project",
+        "name": "(gdb) build & debug my project (Linux)",
         "type": "cppdbg",
         "request": "launch",
         "program": "${workspaceFolder}/${workspaceFolderBasename}",
@@ -48,6 +48,5 @@
         ],
         "preLaunchTask": "Build"
       }
-
     ]
 }
