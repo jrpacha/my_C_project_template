@@ -1,7 +1,6 @@
-# This Makefile will help to build over 90% of your projects in C/C+ and
-# fortran 77
+# Makefile to compile samall projects in fortran/C/C++
 #
-# Sources. See,
+# Sources. See:
 # http://make.mad-scientist.net/papers/advanced-auto-dependency-generation/
 # http://nuclear.mutantstargoat.com/articles/make/
 #Here we use much of the code that's in these webs!
