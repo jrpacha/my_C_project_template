@@ -35,15 +35,16 @@ DEPDIR=       .d
 ifdef OS
     $(shell mkdir $(OBJDIR) 2>NUL:)
     $(shell mkdir $(DEPDIR) 2>NUL:)
+    PROG:=$(PROG).exe
     MV = move
     POSTCOMPILE = $(MV) $(DEPDIR)\$*.Td $(DEPDIR)\$*.d 2>NUL
     RMFILES = del /Q /F $(OBJDIR)\*.o $(DEPDIR)\*.d 2>NUL
     RMDIR = rd $(OBJDIR) $(DEPDIR) 2>NUL
     RUN=$(PROG)
-    RMEXE= del /Q /F $(PROG).exe 2>NUL
+    RMEXE= del /Q /F $(PROG) 2>NUL
     USE=Use:
     USE.HELP='make help', to see other options.
-    USE.BUILD='make $(PROG)', to build the executable, $(PROG).
+    USE.BUILD='make', to build the executable, $(PROG).
     USE.CLEAN='make clean', to delete the object and dep files.
     USE.MRPROPER='make mrproper', to delete the executable as well.
     ECHO=@echo.
@@ -59,7 +60,7 @@ else
         RMEXE = rm -f $(PROG)
         USE="Use:"
         USE.HELP="      'make help', to see other options."
-        USE.BUILD="     'make ${PROG}', to build the executable, $(PROG)."
+        USE.BUILD="     'make', to build the executable, $(PROG)."
         USE.CLEAN="     'make clean', to delete the object and dep files."
         USE.MRPROPER="     'make mrproper', to delete the executable as well."
         ECHO=@echo
@@ -94,8 +95,6 @@ LDFLAGS=
 
 # Note: -std=legacy.  We use std=legacy to compile fortran 77
 
-build: $(PROG)
-
 $(PROG): $(OBJS)
 	$(CXX) -o$@ $^ $(LDFLAGS) $(CXXLIBS) $(CCLIBS) $(FFLIBS)
 	$(ECHO)
@@ -103,7 +102,7 @@ $(PROG): $(OBJS)
 	$(ECHO)      $(USE.HELP)
 	$(ECHO)
 
-run: build
+run: $(PROG)
 	$(RUN)
 
 help:
@@ -145,4 +144,4 @@ $(DEPDIR)/%.d:;
 
 -include $(DEPS)
 
-.PHONY: clean mrproper $(PROG_RELEASE) run
+.PHONY: clean mrproper all run

@@ -25,7 +25,6 @@
       "type": "shell",
       "command": "make",
       "args": [
-          "build",
       ],
       "group": "build",
 	    "presentation": {
