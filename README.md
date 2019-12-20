@@ -18,7 +18,7 @@
     `~$ make mrproper`
     
 #### Sources ####
-We use the work in:
+I wrote this for myself using the stuff I found in:
 
 * http://make.mad-scientist.net/papers/advanced-auto-dependency-generation/ (see references therein)
 * https://www.gnu.org/software/make/manual/html_node/Automatic-Prerequisites.html (see references therein)
