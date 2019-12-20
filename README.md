@@ -16,3 +16,12 @@
   * To clean the project completely (purge)
 
     `~$ make mrproper`
+    
+#### Sources ####
+We use the work in:
+
+* http://make.mad-scientist.net/papers/advanced-auto-dependency-generation/ (see references therein)
+* https://www.gnu.org/software/make/manual/html_node/Automatic-Prerequisites.html (see references therein)
+* http://nuclear.mutantstargoat.com/articles/make/ by John Tsiombikas nuclear@member.fsf.org
+
+So all the credits go to these guys!!!
