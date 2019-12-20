@@ -1,9 +1,13 @@
 # Makefile to compile samall projects in fortran/C/C++
 #
 # Sources. See:
-# http://make.mad-scientist.net/papers/advanced-auto-dependency-generation/
-# http://nuclear.mutantstargoat.com/articles/make/
-#Here we use much of the code that's in these webs!
+#
+# http://make.mad-scientist.net/papers/advanced-auto-dependency-generation/ (see references therein)
+# https://www.gnu.org/software/make/manual/html_node/Automatic-Prerequisites.html (see references therein)
+# http://nuclear.mutantstargoat.com/articles/make/ by John Tsiombikas nuclear@member.fsf.org
+#
+# So all the credits go to these guys!!!
+#
 #
 # Use:
 # Create a folder to hold your project, for example
