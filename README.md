@@ -18,10 +18,12 @@
     `~$ make mrproper`
     
 #### Sources ####
-I wrote this template to use it in my own projects and I copied a lot of the stuff from the following sources:
+
+I wrote this 'template' to use it in my own projects. It is by no means an original work, for it is based in the following sources.
 
 * http://make.mad-scientist.net/papers/advanced-auto-dependency-generation/ (see references therein)
 * https://www.gnu.org/software/make/manual/html_node/Automatic-Prerequisites.html (see references therein)
 * http://nuclear.mutantstargoat.com/articles/make/ by John Tsiombikas nuclear@member.fsf.org
 
-So all the credits go to these guys!!!
+So all the credit to this guys!!!
+
